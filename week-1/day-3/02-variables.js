@@ -72,6 +72,8 @@ console.log(z);
 
 // you CAN redeclare via let at a new scope, but might end up being confusing, to try to avoid
 if (true) {
+    // console.log(z); // this runs into a temporal problem, because the z declared below hasn't arrived yet
+    // it won't look to the one outside the scope
     let z = 100;
     console.log(z);
 }
@@ -88,9 +90,14 @@ const myArray = [ 1, 2, 3, 4, 5 ];
 console.log(myArray);
 myArray[0] = 11;
 console.log(myArray);
+// myArray = [ 5, 6, 7 ]; // can't do this!
 
 const myObject = { id: 6, name: "Sally Mae" };
 console.log(myObject);
 myObject.id = 7;
 console.log(myObject);
-// myObject = { else: "abc" }; // can't do this, though!
+// myObject = { else: "abc" }; // can't do this, either!
+
+
+let arrayStorage = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+arrayStorage = undefined;
