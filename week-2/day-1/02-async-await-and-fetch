@@ -1,0 +1,114 @@
+// ASYNC/AWAIT (AND FETCH) IN JS
+
+/**
+ * we can designate a function as async, allowing us to use the await keyword
+ * we don't HAVE to make async calls in an async function
+ * BUT we can't force the thread to wait for the results, and we may get odd functionality sometimes
+ */
+
+// if we do this outside of async/await, we get a pending Promise when we try to print it
+// let response = fetch('https://reqres.in/api/users');
+
+// console.log(response);
+
+// so, we have to wrap it in an async function and await the results
+
+async function getData() {
+    let response = await fetch('https://reqres.in/api/users');
+    // console.log(response);
+
+    // for this API, we have to get the data out in a readable fashion
+    // we have the problem again, because to unpack the stream is another async operation
+    let JSON = await response.json();
+    // console.log(JSON);
+
+    // once you're out of Promise-Land, you can just run sync code as usual and don't need await anymore
+    let data = JSON.data;
+    // console.log(data);
+    return data;
+
+    // to pass a failure up to the calling function, return a rejected Promise
+    // return Promise.reject('FAILED');
+}
+
+// getData();
+
+// this function depends on another async function
+// we need to wait for that function to properly return its data before processing it here
+// so we need to make this function async as well
+// async functions always return Promises, so we need to unpack them (we can't just store their return values)
+async function findShortestFirstName() {
+    let data;
+    await getData().then(result => data = result).catch(error => console.log(error));
+
+    let shortestFirstName = data.reduce((one, two) => {
+        return (one.first_name.length < two.first_name.length) ? one : two;
+    });
+
+    console.log(shortestFirstName);
+}
+
+// findShortestFirstName();
+
+// fetch is an API for making HTTP requests
+// you're not really gonna use this in your frontend
+// but you'll use it often in your backend servers to make calls to other servers or external APIs
+// you will NOT use it for database requests (that's something else)
+
+/**
+ * HTTP Request Methods:
+ * GET -- to read one or more records
+ * POST -- to create a record
+ * DELETE -- to remove a record
+ * PUT -- to update a record
+ * 
+ * fetch uses GET by default unless you specify a method
+ */
+
+// fetch('https://reqres.in/api/users').then(response => response.json()).then(json => console.log(json));
+
+// setting this explicitly as a GET request
+// the second parameter of a fetch call is an options block
+// we can set various options for this specific request
+fetch('https://reqres.in/api/users?page=2', {
+    method: 'GET'
+}).then(response => response.json()).then(json => console.log(json));
+
+// a POST request
+// fetch('https://reqres.in/api/users', {
+//     method: 'POST',
+//     body: JSON.stringify({
+//         name: 'Joe Schmo',
+//         job: 'Telemarketer'
+//     }),
+//     headers: {
+//         "Content-Type": "application/json"
+//     }
+// }).then(response => response.json()).then(json => console.log(json));
+
+let bodyObject = {
+    name: 'Joe Schmo',
+    job: 'Telemarketer'
+}
+
+let myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
+
+// the same request, using pre-defined objects
+fetch('https://reqres.in/api/users', {
+    method: 'POST',
+    body: JSON.stringify(bodyObject),
+    headers: myHeaders
+}).then(response => { console.log(response); return response.json(); }).then(json => console.log(json));
+
+// making a PUT request to id 7
+fetch('https://reqres.in/api/users/7', {
+    method: 'PUT',
+    body: JSON.stringify(bodyObject),
+    headers: myHeaders
+}).then(res => res.json()).then(json => console.log(json));
+
+// deleting the record with id 7
+fetch('https://reqres.in/api/users/7', {
+    method: 'DELETE'
+}).then(res => console.log(res));
