@@ -1,0 +1,14 @@
+{
+  "name": "first-express-app",
+  "version": "1.0.0",
+  "description": "My First Express App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jon Provan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
