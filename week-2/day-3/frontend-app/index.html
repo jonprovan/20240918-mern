@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        console.log('Script running!');
+        
+        async function getData() {
+
+            let responseData;
+            await fetch('http://localhost:8080/salesperson')
+                .then(data => {
+                    return data.json();
+                })
+                .then(json => {
+                    responseData = json.message;
+                });
+
+            document.getElementById('text-div').innerHTML = responseData;
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <button onclick="getData()" >GET DATA</button>
+
+    <div id="text-div"></div>
+    
+</body>
+</html>
