@@ -1,0 +1,74 @@
+<!-- this is an HTML file, and this is an HTML comment 
+     unlike other comments, this one has to surround the entire comment in order to stop -->
+
+<!-- the doctype tag lets the browser know that this file is an HTML file -->
+<!-- the doctype tag used to be way more complex in HTML 4 and before -->
+<!-- we're now in HTML 5, and a lot of the syntax has been cleaned up a bit -->
+<!DOCTYPE html>
+
+<!-- the html tag surrounds the rest of the content; you don't really need to touch it -->
+<html lang="en">
+
+<!-- the head tag is intended for data describing the page -->
+<!-- even though tags inside head may still be visible on the page, you SHOULD NOT use it for visible content -->
+<head>
+    <!-- the meta tags describe various details about the page
+         keywords, descriptions, etc. -->
+    <!-- this is a self-closing tag with no separate closing tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- the title tag describes what appears in the browser tab -->
+    <!-- this tag requires a closing tag when the content is complete -->
+    <title>My First HTML Page</title>
+
+    <!-- you can load an external stylesheet in the head -->
+    <link rel="stylesheet" href="css/sample-stylesheet.css">
+
+    <!-- you can also link to OR include JavaScript -->
+    <!-- linking an external script -->
+    <script type="text/javascript" src="scripts/sample-script.js"></script>
+
+    <!-- including the script here -->
+    <script type="text/javascript">
+        console.log('My Head Script is running!');
+        let x = 14 * 6;
+        console.log(x);
+
+        function sample() {
+            console.log('This is my sample function.');
+        }
+    </script>
+</head>
+
+<!-- anything you want to actually see should live within the body tag -->
+<body>
+
+    <!-- tags should be fully, properly nested
+         the browser will do its best to guess what you meant, but it breaks the DOM -->
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem animi dolor nihil magni, similique accusamus <em>explicabo vitae atque cumque cum eius consectetur? At, aspernatur repellendus modi repellat facere nulla voluptatum!</em></p>
+    <p><em>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</em> Rem animi dolor nihil magni, similique accusamus explicabo vitae atque cumque cum eius consectetur? At, aspernatur repellendus modi repellat facere nulla voluptatum!</p>
+
+    <!-- heading tags -->
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+
+    <!-- paragraphs -->
+    <p><strong>bold text uses the strong tag</strong> <em>italic text uses the emphasis tag</em> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus soluta laborum nemo consequuntur! Natus est, cum accusantium in nostrum dolorem blanditiis esse numquam nemo aut explicabo, quasi non facilis sit?</p>
+
+    <!-- images -->
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover">
+
+    <!-- links -->
+    <a href="http://google.com">Go to Google!</a>
+
+    <!-- in a general sense, the starting page is going to be index.html
+         when you hit a URL, the page the browser looks for if you don't specify one
+         is index.html by default -->
+    
+</body>
+
+</html>

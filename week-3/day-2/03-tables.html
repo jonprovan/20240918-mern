@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+</head>
+<body>
+
+    <!-- tables in HTML are pretty much what you'd expect -->
+    <!-- we lay out a row/column structure\
+         they are NOT a great way to lay out an overall web page
+         they ARE a great way to lay out database information -->
+
+    <!--
+        the overall tag is table -- the entire table
+            thead -- the table header row
+            tbody -- the main content of the table
+            tfoot -- the footer row of the table
+
+            within each:
+                tr -- one table row
+
+                and within that:
+                    th -- a table header cell (bold)
+                    td -- a table data cell
+    -->
+
+    <!-- by default, tables and cells will adjust their size to the contents -->
+
+    <table>
+        <thead>
+            <tr style="text-align: left;">
+                <th>Type</th>
+                <th>Roast</th>
+                <th>Price</th>
+                <th>Deliciousness</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Breakfast Blend</td>
+                <td>Medium</td>
+                <td>$9.99/lb.</td>
+                <td>Just Alright</td>
+            </tr>
+            <tr>
+                <td>French Roast</td>
+                <td>Dark</td>
+                <td>$12.99/lb.</td>
+                <td>Pretty Darn Good</td>
+            </tr>
+            <tr>
+                <td>Bagel Shop Coffee</td>
+                <td>Barely There</td>
+                <td>$1.99/cup</td>
+                <td>Gets The Job Done If You're Hurtin'</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr style="font-style: italic;">
+                <td>Best = French Roast</td>
+                <td>You know it</td>
+                <td>Sure, it's expensive</td>
+                <td>Get some now!</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+</body>
+</html>

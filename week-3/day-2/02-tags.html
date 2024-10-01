@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags</title>
+</head>
+
+<body>
+
+    <!-- general note about HTML -- any whitespace after the first space/return doesn't count -->
+    ABC       DEF
+    
+    
+    GHI
+
+    <!--
+        for tags, there are two main distinctions:
+
+        block vs. inline
+        block -- automatically take up all available space left to right
+                 and push anything following it to the next line
+        inline -- takes up only as much space as its content
+                  and displays in line with other inline tags
+
+        semantic vs. generic
+        there are many tags that do exactly the same thing but have different names. Why?
+        it can be helpful for people using your site from a code perspective
+        to be able to understand the intention of a certain section/tag
+
+        Generic Tags
+        block -- div
+        inline -- span
+
+        Semantic Tags
+        block with no formatting -- header, footer, nav, aside, section, article, main, etc.
+        block with formatting -- p, h1-h6
+
+        inline with no formatting -- n/a
+        inline with formatting -- strong, em, a, sup, sub, etc.
+
+        There are also several other types of tag that don't really fall under these categories
+        Like img, audio, video, various form tags, table tags, etc.
+    -->
+    <!-- p is a block tag -->
+    Some text on a line, outside of a tag
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, eaque consequuntur! Aspernatur ea magnam laudantium laborum, voluptas fugit ab. Architecto similique itaque distinctio temporibus soluta doloribus deleniti minus optio! Sed.</p>
+    <p>asdf</p>
+    Some more text on a line, outside of a tag
+
+    <br>
+
+    <!-- img is an inline tag -->
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam 'Ten' Album Cover" width="100px">
+
+    <div>First Div</div>
+    <div>Second Div</div>
+    <div style="margin-bottom: 3000px;">Third Div -- <span>this one includes a span</span></div>
+
+    <!-- this headline has an anchor via its id that we can link to directly -->
+    <h2 id="target">My Target Headline</h2>
+
+</body>
+</html>
