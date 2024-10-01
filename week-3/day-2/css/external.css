@@ -1,0 +1,7 @@
+/* this is an external stylesheet */
+/* its syntax is identical to one in the head tag */
+.test {
+    color: orange;
+    text-transform: lowercase;
+    text-decoration: underline;
+}

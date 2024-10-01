@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics</title>
+
+    <!-- these styles apply ONLY to elements on this page
+         but, they can each apply to multiple elements, depending on the selector -->
+    <style>
+        /*
+            <selector> {
+                <attribute name>: <attribute value>;
+                <attribute name>: <attribute value>;
+                <attribute name>: <attribute value>;
+            } 
+        */
+
+        /* this one applies to All h1 elements on this page */
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* this selects ANY span inside ANY h1, however deeply nested */
+        h1 span {
+            font-style: italic;
+        }
+
+        /* this only applies to strong tags that are DIRECT children of h1 tags */
+        h1 > strong {
+            text-transform: uppercase;
+        }
+
+        /* you can create a CSS class to apply the same style to whatever you like */
+        .purple {
+            color: purple;
+            font-weight: bold;
+        }
+
+        .large {
+            font-size: 20px;
+        }
+
+        /* you can style an element by id as well
+           you should only have ONE element per page with a particular id */
+        #last-paragraph {
+            border: 2px solid black;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        nav {
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        nav > a {
+            display: inline-block;
+            font-size: 20px;
+            padding: .75em 1em;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* this style will apply when a user hovers their mouse over the links */
+        nav > a:hover {
+            background-color: rgb(10, 181, 181);
+            color: white;
+            transition: 0.5s;
+        }
+
+    </style>
+
+    <!-- loading an external stylesheet -->
+    <link rel="stylesheet" href="css/external.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#">HOMEPAGE</a>
+        <a href="#">PRODUCTS</a>
+        <a href="#">ABOUT US</a>
+    </nav>
+
+    <!--
+        3 places to put CSS (Cascading Stylesheets)
+        (in order of easiest/worst -> hardest/best)
+        
+        1. inline, inside a specific tag
+            - quick and easy
+            - but, the style is not reusable
+            - can clunk up HTML code quickly
+
+        2. in the style tag in the head of a single page
+            - takes a little more setup
+            - the styles are reusable across the page
+            - if you have styles that are only applicable to a single page,
+                this can be a good option
+
+        3. in an external stylesheet, loaded in the head tag
+            - takes even more setup
+            - the styles are reusable across the entire site
+            - usually the route you wanna go
+            - can even be a stylesheet from another website! (Bootstrap, PrimeNG, etc.)
+    -->
+
+    <h1 style="color: red; font-size: 40px;">STYLED INLINE</h1>
+    <h1>STYLED VIA HEAD STYLE TAG</h1>
+    <h1>STYLED VIA HEAD STYLE TAG <span>Internal <strong>Span</strong></span></h1>
+
+    <span>External Span</span>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quibusdam numquam reiciendis, officiis laudantium eum fuga! Non delectus alias velit voluptatem obcaecati tempora? Similique excepturi vel commodi dolores itaque.</p>
+    <p class="purple large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quibusdam numquam reiciendis, officiis laudantium eum fuga! Non delectus alias velit voluptatem obcaecati tempora? Similique excepturi vel commodi dolores itaque.</p>
+    <!-- here the inline style overrides the one from the head -->
+    <p class="purple" id="last-paragraph" style="color: chartreuse;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quibusdam numquam reiciendis, officiis laudantium eum fuga! Non delectus alias velit voluptatem obcaecati tempora? Similique excepturi vel commodi dolores itaque.</p>
+
+    <!-- 
+        when there is a conflict between styling locations/rules
+        inline > in head > external
+        styles that are lower down in the sheet itself > ones that are higher
+    -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut nemo laudantium itaque iure magni, animi perferendis cupiditate ea deserunt tempora quos! Incidunt, possimus unde labore culpa iste quo distinctio. Facere.</p>
+    <p class="test">Quod magni adipisci blanditiis molestiae id nobis, enim consectetur laborum illo quasi, reprehenderit excepturi! Rerum expedita modi corporis excepturi itaque autem? Libero vero atque voluptatibus sapiente ipsum sint nulla unde?</p>
+    <p>Deserunt ducimus quidem molestiae reiciendis fugiat illo omnis assumenda, officia vero officiis tempora, delectus, odit distinctio voluptates autem quis? Necessitatibus laudantium fuga commodi accusantium distinctio consequatur culpa inventore voluptate doloremque.</p>
+    
+    
+</body>
+</html>

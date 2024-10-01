@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+
+    <!--
+        relative vs. absolute sizing
+            absolute (30px, etc.) is good for font sizes and box measurements
+            relative (1em, 4rem, 80%, 75vh, etc.) is good for padding and scaling
+    -->
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        body {
+            padding: 24px;
+        }
+
+        div {
+            background-color: darkgray;
+            width: 100px;
+            height: 100px;
+            /* display: inline-block; */
+            float: left;
+            padding: 20px;
+            border: 5px solid blue;
+            margin: 0px 10px 10px 0px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1em;
+        }
+
+        img {
+            width: 200px;
+            float: right;
+            /* this overload uses top, right, bottom and left as input values */
+            margin: 0px 0px 32px 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+    <div>abc def ghi jkl mno pqr stu vwx yz</div>
+
+    <hr style="clear: both;">
+
+    <img src="images/pearl-jam.webp" alt="Pearl Jam">
+
+    <p><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut est illo voluptas iure vel, beatae asperiores pariatur incidunt ea fugiat voluptate amet rem porro omnis error, nemo dolore temporibus quisquam!</span><span>Sapiente architecto accusamus neque blanditiis dolorum? Vitae incidunt est minus porro. Esse nesciunt ad repellat maiores praesentium dolorum iusto voluptatibus saepe voluptates beatae necessitatibus, voluptas, iure, itaque quos libero molestias?</span><span>Fugit corrupti voluptatum itaque dolore, numquam, dolor dolores quae minus vel explicabo qui porro, necessitatibus atque eos odio enim nihil? Quo non debitis a aspernatur repellat quidem, mollitia optio nisi.</span></p>
+    <p><span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae obcaecati ad culpa velit aliquid voluptates facilis ipsam repellat officia non dicta, labore aut sapiente blanditiis cum, nam commodi officiis fugit.</span><span>Architecto, nisi. Dolorum similique, reiciendis fugit rem quaerat nostrum nesciunt iure molestias incidunt suscipit dicta. Dignissimos repudiandae eveniet quasi veniam accusantium natus fuga repellendus tempora? Corporis rem nemo perferendis eum?</span><span>Fugiat qui incidunt adipisci ipsum perspiciatis facilis autem minima temporibus necessitatibus repellendus in, odit non magnam obcaecati quia? Quasi distinctio modi eius saepe fugit excepturi! Quia nobis dolorem laboriosam officia!</span></p>
+    <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod repudiandae eaque corporis? Quasi, rerum blanditiis ratione perferendis ad, vero, debitis neque provident rem veritatis libero eligendi officiis delectus facere!</span><span>Ratione accusantium doloremque sunt. Voluptatem quo, ipsum, perspiciatis doloremque molestias impedit nesciunt amet quia, odio magnam officiis minima veritatis fugit delectus enim quas ad? Possimus fugiat aperiam ipsam recusandae similique.</span><span>Deserunt culpa ipsa autem dolor doloremque nam vero omnis dicta! Quas impedit, error non eos quia eveniet unde ducimus fugiat? Neque dicta incidunt officiis vitae odit, iste adipisci debitis illum.</span></p>
+    
+</body>
+</html>

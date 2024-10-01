@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+
+    <!-- forms are how we collect data from the user and submit it via request -->
+    <!-- a form can be the typical form we envision or something simple (search bar, etc.) -->
+
+    <!-- an HTML form -->
+    <!-- the method property is what you'd expect, usually you only set GET or POST here -->
+    <!-- the action property is where the form is going -->
+    <!-- this simple form merely redirects to Google -->
+    <h2>FORM 1</h2>
+    <form method="get" action="http://google.com">
+
+        <button type="submit">GO!</button>
+
+    </form>
+
+
+
+    <!-- this form takes some data from the user, then submits it -->
+    <h2>FORM 2</h2>
+    <form method="post" action="https://www.w3schools.com/action_page.php">
+
+        <!-- a typical text input -->
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div>
+            <label for="age">Age: </label>
+            <input type="number" id="age" name="age" min="0" max="100" step="5">
+        </div>
+
+        <div>
+            <label for="favoriteColor">Favorite Color: </label>
+            <input type="color" id="favoriteColor" name="favoriteColor">
+        </div>
+
+        <div>
+            <label for="birthday">Birthday: </label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
+
+        <!-- this one's a checkbox -->
+        <div>
+            <label for="catPerson">Do you like cats? </label>
+            <input type="checkbox" name="catPerson" id="catPerson" value="yes">
+        </div>
+
+        <!-- using radio buttons for a non-binary selection -->
+        <div>
+            <h3>Favorite Sandwich:</h3>
+            <input type="radio" id="reuben" value="reuben" name="favoriteSandwich">
+            <label for="reuben"> Reuben </label>
+
+            <input type="radio" id="ham" value="ham" name="favoriteSandwich">
+            <label for="ham"> Ham </label>
+
+            <input type="radio" id="turkey" value="turkey" name="favoriteSandwich">
+            <label for="turkey"> Turkey </label>
+        </div>
+
+        <!-- for choices having many options that would take up too much space,
+             use a select (dropdown) -->
+        <div>
+
+            <label for="favoriteFabric">Select favorite fabric: </label>
+            <select name="favoriteFabric" id="favoriteFabric">
+                <option value="" selected="selected">-- Choose a fabric below...</option>
+                <option value="flannel">Flannel</option>
+                <option value="gingham">Gingham</option>
+                <option value="cotton">Cotton</option>
+                <option value="taffeta">Taffeta</option>
+                <option value="silk">Silk</option>
+                <option value="burlap">Burlap</option>
+            </select>
+
+        </div>
+
+        <button type="submit">SUBMIT</button>
+
+    </form>
+    
+</body>
+</html>
