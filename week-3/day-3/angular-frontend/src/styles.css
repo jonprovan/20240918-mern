@@ -11,3 +11,13 @@
 body {
     margin: 0px;
 }
+
+main {
+    padding: 12px;
+}
+
+h1 {
+    margin: 0px 0px 12px 0px;
+    font-size: 26px;
+    color: rgb(255, 100, 100)
+}

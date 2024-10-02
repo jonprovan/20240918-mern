@@ -1,1 +1,15 @@
-<p>salespeople works!</p>
+<main>
+    <h1>SALESPEOPLE</h1>
+
+    <!-- we're going to create Salesperson component for each Salesperson -->
+    <!-- this one is a single component bound to a single Salesperson -->
+    <!-- <app-salesperson [salesperson]="mockSalespeople[2]"></app-salesperson> -->
+
+    <!-- displaying one card for each Salesperson -->
+    @for (sp of mockSalespeople; track $index) {
+        <app-salesperson [salesperson]="sp"
+                         (deleteSalespersonEvent)="deleteMockSalesperson($index, $event)"
+                         (tenPercentRaiseEvent)="mockSalespersonRaise($index, $event)"></app-salesperson>
+    }
+
+</main>

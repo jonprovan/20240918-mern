@@ -1,0 +1,12 @@
+<article>
+    <ul>
+        <li>ID: {{ salesperson.id }}</li>
+        <li>First Name: {{ salesperson.first_name }}</li>
+        <li>Last Name: {{ salesperson.last_name }}</li>
+        <li>Department: {{ salesperson.department }}</li>
+        <li>Hire Date: {{ salesperson.hire_date }}</li>
+        <li>Salary: ${{ salesperson.salary }}</li>
+    </ul>
+    <button type="button" (click)="tenPercentRaise()">10% RAISE</button>
+    <button type="button" (click)="deleteSalesperson()">DELETE</button>
+</article>

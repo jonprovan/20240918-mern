@@ -1,1 +1,62 @@
-<p>sales works!</p>
+<main>
+    <h1>SALES</h1>
+
+    <!-- hiding the table if there are no sales in the list -->
+    @if (mockSales.length) {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer First Name</th>
+                    <th>Customer Last Name</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Salesperson ID</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- <tr> -->
+                <!-- {{ }} is property binding -- the variable inside comes from your TS -->
+                    <!-- <td>{{ mockSale.id }}</td>
+                    <td>{{ mockSale.customer_first_name }}</td>
+                    <td>{{ mockSale.customer_last_name }}</td>
+                    <td>{{ mockSale.date }}</td>
+                    <td>{{ mockSale.total }}</td>
+                    <td>{{ mockSale.salesperson_id }}</td>
+                </tr> -->
+
+                <!-- looping through the mockSales array to create rows -->
+                @for (sale of mockSales; track $index) {
+                    <tr>
+                        <td>{{ sale.id }}</td>
+                        <td>{{ sale.customer_first_name }}</td>
+                        <td>{{ sale.customer_last_name }}</td>
+                        <td>{{ sale.date }}</td>
+                        <td>{{ sale.total }}</td>
+                        <td>{{ sale.salesperson_id }}</td>
+                    </tr>
+                }
+
+                <!-- same thing as above, but the older version -->
+                <!-- <tr *ngFor="let sale of mockSales; let index">
+                    <td>{{ sale.id }}</td>
+                    <td>{{ sale.customer_first_name }}</td>
+                    <td>{{ sale.customer_last_name }}</td>
+                    <td>{{ sale.date }}</td>
+                    <td>{{ sale.total }}</td>
+                    <td>{{ sale.salesperson_id }}</td>
+                </tr> -->
+            </tbody>
+        </table>
+    }
+
+    <div>
+        <!-- ( ) is event binding -->
+        <!-- when the button "hears" an event of type click, it runs this method -->
+        <!-- the event only applies to a click on this specific button/element -->
+        <!-- this method adds a Sale to the array -->
+        <!-- it does NOT require manual refreshing; any change to the array values updates it -->
+        <button type="button" (click)="addMockSale()">Add Sale</button>
+    </div>
+</main>
