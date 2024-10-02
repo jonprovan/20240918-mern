@@ -36,7 +36,16 @@ router.get('/:id', async (req, res) => {
 // create one
 router.post('/', async (req, res) => {
     await repo.createSale(req.body)
-        .then(response => res.status(201).send({ message: `Sale created with ID ${response[0].insertId}!` }))
+        .then(async data => {
+                let temp;
+                await repo.getSaleById(data[0].insertId).then(row => temp = new Sale(row[0][0].id,
+                                                                             row[0][0].customer_first_name,
+                                                                             row[0][0].customer_last_name,
+                                                                             row[0][0].date,
+                                                                             row[0][0].total,
+                                                                             row[0][0].salesperson_id));
+                res.status(201).send(temp);
+        })
         .catch(error => res.status(400).send({ errorMessage: 'Sale improperly formatted!'}))
 })
 
