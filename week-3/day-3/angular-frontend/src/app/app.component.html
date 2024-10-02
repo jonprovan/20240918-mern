@@ -1,0 +1,14 @@
+<!-- we can add a component directly using its selector, like this -->
+<!-- find the selector name in the @Component decorator for that component -->
+<!-- they're all all-<component name> by default -->
+<app-header></app-header>
+
+<!--
+  Keep the router-outlet tag on your page!
+  The "pages" to which we navigate will display in the router-outlet
+  Anything that's "static" (on every page) can be called directly
+  Any components nested in components that go to the router outlet will load as well
+-->
+<router-outlet />
+
+<app-footer></app-footer>

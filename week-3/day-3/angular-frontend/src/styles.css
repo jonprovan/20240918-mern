@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* HOWEVER, due to the component structure, not everything will work here the way you want it to */
+
+/* you can try something here, but it may need to go in one of the component stylesheets */
+
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    margin: 0px;
+}
