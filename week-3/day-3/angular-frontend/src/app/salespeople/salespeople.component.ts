@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Salesperson } from '../models/salesperson';
 import { SalespersonComponent } from '../salesperson/salesperson.component';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-salespeople',
@@ -10,6 +11,8 @@ import { SalespersonComponent } from '../salesperson/salesperson.component';
   styleUrl: './salespeople.component.css'
 })
 export class SalespeopleComponent {
+
+  constructor(private httpService: HttpService){}
 
   // this array will be fed out to child Salesperson components, one each
   mockSalespeople: Salesperson[] = [

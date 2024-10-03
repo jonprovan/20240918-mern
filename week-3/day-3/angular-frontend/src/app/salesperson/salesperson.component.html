@@ -7,6 +7,7 @@
         <li>Hire Date: {{ salesperson.hire_date }}</li>
         <li>Salary: ${{ salesperson.salary }}</li>
     </ul>
+    <button type="button" (click)="setFavoriteSalesperson()">SET FAVE</button>
     <button type="button" (click)="tenPercentRaise()">10% RAISE</button>
     <button type="button" (click)="deleteSalesperson()">DELETE</button>
 </article>
