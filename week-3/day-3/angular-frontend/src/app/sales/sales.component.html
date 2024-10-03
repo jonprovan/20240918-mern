@@ -11,7 +11,8 @@
                     <th>Customer Last Name</th>
                     <th>Date</th>
                     <th>Total</th>
-                    <th>Salesperson ID</th>
+                    <th>SP ID</th>
+                    <th>Delete?</th>
                 </tr>
             </thead>
 
@@ -27,7 +28,7 @@
                 </tr> -->
 
                 <!-- looping through the mockSales array to create rows -->
-                @for (sale of mockSales; track $index) {
+                @for (sale of sales; track $index) {
                     <tr>
                         <td>{{ sale.id }}</td>
                         <td>{{ sale.customer_first_name }}</td>
@@ -35,6 +36,8 @@
                         <td>{{ sale.date }}</td>
                         <td>{{ sale.total }}</td>
                         <td>{{ sale.salesperson_id }}</td>
+                        <td><button type="button" (click)="deleteSale(sale.id)">X</button>
+                        </td>
                     </tr>
                 }
 

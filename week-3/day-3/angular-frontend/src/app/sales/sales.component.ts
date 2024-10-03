@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Sale } from '../models/sale'; // importing the Sale class
 import { CommonModule } from '@angular/common';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-sales',
@@ -10,6 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sales.component.css'
 })
 export class SalesComponent {
+
+  // must inject the http service here to have access to its methods
+  constructor(private httpService: HttpService) {
+    this.getAllSales();
+  }
 
   // in TypeScript, we ideally give our variables a type
   // once we do, that variable can only hold values of that type
@@ -26,6 +32,34 @@ export class SalesComponent {
   // the type after <method name>: is the return type of this method
   addMockSale(): void {
     this.mockSales.push(new Sale(555, 'Edna', 'Mode', '1999-01-01', 1000000.00, 11));
+  }
+
+  sales: Sale[] = [];
+
+  // get all
+  getAllSales() {
+    // make the request
+    this.httpService.getAllSales().subscribe(data => {
+      let tempSales: Sale[] = [];
+      if(data.body)
+        for(let sale of data.body) {
+          tempSales.push(new Sale(sale.id,
+                                  sale.customer_first_name,
+                                  sale.customer_last_name,
+                                  sale.date.substring(0,10),
+                                  sale.total,
+                                  sale.salesperson_id))
+        }
+      this.sales = tempSales;
+    })
+  }
+
+  // removing a sale from the DB
+  deleteSale(id: number) {
+    this.httpService.deleteSale(id).subscribe(data => {
+      console.log(data);
+      this.getAllSales();
+    })
   }
 
 }

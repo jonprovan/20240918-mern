@@ -6,10 +6,10 @@
     <!-- <app-salesperson [salesperson]="mockSalespeople[2]"></app-salesperson> -->
 
     <!-- displaying one card for each Salesperson -->
-    @for (sp of mockSalespeople; track $index) {
+    @for (sp of salespeople; track $index) {
         <app-salesperson [salesperson]="sp"
-                         (deleteSalespersonEvent)="deleteMockSalesperson($index, $event)"
-                         (tenPercentRaiseEvent)="mockSalespersonRaise($index, $event)"></app-salesperson>
+                         (deleteSalespersonEvent)="deleteSalesperson($event)"
+                         (tenPercentRaiseEvent)="salespersonRaise($index, $event)"></app-salesperson>
     }
 
 </main>

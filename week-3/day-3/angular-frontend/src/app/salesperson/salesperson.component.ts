@@ -17,7 +17,7 @@ export class SalespersonComponent {
 
   // @Output sends data up to the parent via event emitter
   // you can include a "message" per event emitted of the type in the <>
-  @Output() deleteSalespersonEvent = new EventEmitter<string>();
+  @Output() deleteSalespersonEvent = new EventEmitter<number>();
 
   @Output() tenPercentRaiseEvent = new EventEmitter<number>();
 
@@ -52,7 +52,7 @@ export class SalespersonComponent {
     if(this.favoriteSalesperson === this.salesperson.first_name)
       this.dataPass.setFavoriteSalesperson('None selected');
 
-    this.deleteSalespersonEvent.emit('Test Message...');
+    this.deleteSalespersonEvent.emit(this.salesperson.id);
   }
 
 }
