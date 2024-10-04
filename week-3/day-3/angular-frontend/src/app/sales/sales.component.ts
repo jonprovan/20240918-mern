@@ -3,11 +3,14 @@ import { Sale } from '../models/sale'; // importing the Sale class
 import { CommonModule } from '@angular/common';
 import { HttpService } from '../services/http.service';
 import { FormsModule } from '@angular/forms';
+import { SpongebobPipe } from '../pipes/spongebob.pipe';
 
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [CommonModule, FormsModule], // common module import for older functionality
+  // common module import for older functionality and pipes in general
+  // we also import our custom pipe here to make it available
+  imports: [CommonModule, FormsModule, SpongebobPipe],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })

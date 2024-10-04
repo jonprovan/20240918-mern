@@ -93,10 +93,12 @@
                 @for (sale of sales; track $index) {
                     <tr>
                         <td>{{ sale.id }}</td>
-                        <td>{{ sale.customer_first_name }}</td>
-                        <td>{{ sale.customer_last_name }}</td>
-                        <td>{{ sale.date }}</td>
-                        <td>${{ sale.total }}</td>
+                        <!-- this displayed value uses our custom pipe -->
+                        <!-- we must import it first in this TS file -->
+                        <td>{{ sale.customer_first_name | spongebob : true }}</td>
+                        <td>{{ sale.customer_last_name | spongebob : false }}</td>
+                        <td>{{ sale.date | date : 'shortDate' }}</td>
+                        <td>{{ sale.total | currency }}</td>
                         <td>{{ sale.salesperson_id }}</td>
                         <td><button type="button" (click)="sendToUpdate(sale)">Update</button></td>
                         <td><button type="button" (click)="deleteSale(sale.id)">X</button>

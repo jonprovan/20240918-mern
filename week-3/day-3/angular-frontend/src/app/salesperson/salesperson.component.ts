@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Salesperson } from '../models/salesperson';
-import { DataPassService } from '../services/data-pass.service';
+import { DataPassService } from '../services/data-pass.service'; // for our service
+import { Router } from '@angular/router'; // for router navigation
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-salesperson',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './salesperson.component.html',
   styleUrl: './salesperson.component.css'
 })
@@ -24,7 +26,8 @@ export class SalespersonComponent {
   favoriteSalesperson: string = '';
 
   // we also inject our service here to pass data up to it
-  constructor(private dataPass: DataPassService) {
+  // and we inject a Router to navigate to our detail page
+  constructor(private dataPass: DataPassService, private router: Router) {
 
     this.dataPass.favoriteSalespersonObservable.subscribe(data => {
       this.favoriteSalesperson = data;
@@ -53,6 +56,12 @@ export class SalespersonComponent {
       this.dataPass.setFavoriteSalesperson('None selected');
 
     this.deleteSalespersonEvent.emit(this.salesperson.id);
+  }
+
+  // we use the router here to navigate to the details component
+  // tacking on the current salesperson's ID
+  showDetails() {
+    this.router.navigate([ 'salesperson/' + this.salesperson.id ]);
   }
 
 }

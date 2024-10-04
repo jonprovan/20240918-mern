@@ -1,0 +1,22 @@
+<main>
+
+    <h1>SALESPERSON DETAIL</h1>
+
+    <!-- the list will appear if we have a valid object, otherwise not -->
+    @if(salesperson.id) {
+        <ul>
+            <li>ID: {{ salesperson.id }}</li>
+            <li>First Name: {{ salesperson.first_name }}</li>
+            <li>Last Name: {{ salesperson.last_name }}</li>
+            <li>Department: {{ salesperson.department }}</li>
+            <li>Hire Date: {{ salesperson.hire_date }}</li>
+            <li>Salary: ${{ salesperson.salary }}</li>
+        </ul>
+    }
+    <!-- this paragraph will appear if the request fails, otherwise not -->
+    <!-- the error status and the id are generated from the error response -->
+    @else {
+        <p>*** {{ failedStatus }} Error: No Salesperson with ID {{ failedId }} exists! ***</p>
+    }
+
+</main>

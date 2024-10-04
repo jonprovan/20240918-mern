@@ -5,12 +5,20 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+// setting up basic auth
+const basicAuth = require('express-basic-auth');
+const user = {
+    'pufferfish23':'dontmakemeangry'
+}
+
 // CORS = cross-origin resource sharing
 // using CORS protection, you can ensure that frontend requests are only allowed from specific "whitelist" IP addresses
 // you can enable this per endpoint or per router, but we're going to do it globally
 // Postman bypasses this, as do other API backend servers, but it applies to frontend servers
 const cors = require('cors');
 app.use(cors({ origin: process.env.CORS_WHITELIST.split(',') }));
+
+app.use(basicAuth({ users: user }));
 
 // we're going to use some middleware here to log the user-agent and the timestamp of each request
 // middleware executes AFTER the request is received but BEFORE it gets handled
