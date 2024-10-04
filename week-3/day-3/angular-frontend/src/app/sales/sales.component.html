@@ -1,17 +1,79 @@
 <main>
     <h1>SALES</h1>
 
+    <form id="update">
+        <h2>Update Sale</h2>
+
+        <label for="idUpdate">ID</label>
+        <input type="number" name="idUpdate" id="idUpdate" [(ngModel)]="idUpdate">
+
+        <label for="customerFirstNameUpdate">Customer First Name</label>
+        <input type="text" name="customerFirstNameUpdate" id="customerFirstNameUpdate" [(ngModel)]="customerFirstNameUpdate">
+
+        <label for="customerLastNameUpdate">Customer Last Name</label>
+        <input type="text" name="customerLastNameUpdate" id="customerLastNameUpdate" [(ngModel)]="customerLastNameUpdate">
+
+        <label for="dateUpdate">Date</label>
+        <input type="date" name="dateUpdate" id="dateUpdate" [(ngModel)]="dateUpdate">
+
+        <label for="totalUpdate">Total</label>
+        <input type="number" name="totalUpdate" id="totalUpdate" [(ngModel)]="totalUpdate">
+
+        <label for="salespersonIdUpdate">Salesperson ID</label>
+        <select name="salespersonIdUpdate" id="salespersonIdUpdate" [(ngModel)]="salespersonIdUpdate">
+            @for (spId of salespersonIds; track $index) {
+                <option value="{{ spId }}">{{ spId }}</option>
+            }
+        </select>
+
+        <button type="button" (click)="updateSale()">UPDATE</button>
+    </form>
+
+    <form>
+        <h2>Create New Sale</h2>
+
+        <!--
+            each input is mapped to a TS variable with its [(ngModel)] property
+            the value of ngModel is the name of the variable
+            you MUST also have a name property that matches the variable name
+            changing either the input value or the TS variable changes the other
+            this is two-way binding -- [] to map the property value to the visual form
+                () to map the changes in the form to the property value
+        -->
+        <label for="customerFirstName">Customer First Name</label>
+        <input type="text" name="customerFirstName" id="customerFirstName" [(ngModel)]="customerFirstName">
+
+        <label for="customerLastName">Customer Last Name</label>
+        <input type="text" name="customerLastName" id="customerLastName" [(ngModel)]="customerLastName">
+
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" [(ngModel)]="date">
+
+        <label for="total">Total</label>
+        <input type="number" name="total" id="total" [(ngModel)]="total">
+
+        <label for="salespersonId">Salesperson ID</label>
+        <select name="salespersonId" id="salespersonId" [(ngModel)]="salespersonId">
+            @for (spId of salespersonIds; track $index) {
+                <option value="{{ spId }}">{{ spId }}</option>
+            }
+        </select>
+
+        <button type="button" (click)="createSale()">CREATE NEW</button>
+    </form>
+
     <!-- hiding the table if there are no sales in the list -->
     @if (mockSales.length) {
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Customer First Name</th>
-                    <th>Customer Last Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Date</th>
                     <th>Total</th>
                     <th>SP ID</th>
+                    <th>Update</th>
                     <th>Delete?</th>
                 </tr>
             </thead>
@@ -34,8 +96,9 @@
                         <td>{{ sale.customer_first_name }}</td>
                         <td>{{ sale.customer_last_name }}</td>
                         <td>{{ sale.date }}</td>
-                        <td>{{ sale.total }}</td>
+                        <td>${{ sale.total }}</td>
                         <td>{{ sale.salesperson_id }}</td>
+                        <td><button type="button" (click)="sendToUpdate(sale)">Update</button></td>
                         <td><button type="button" (click)="deleteSale(sale.id)">X</button>
                         </td>
                     </tr>
@@ -54,12 +117,12 @@
         </table>
     }
 
-    <div>
+    <!-- <div> -->
         <!-- ( ) is event binding -->
         <!-- when the button "hears" an event of type click, it runs this method -->
         <!-- the event only applies to a click on this specific button/element -->
         <!-- this method adds a Sale to the array -->
         <!-- it does NOT require manual refreshing; any change to the array values updates it -->
-        <button type="button" (click)="addMockSale()">Add Sale</button>
-    </div>
+        <!-- <button type="button" (click)="addMockSale()">Add Sale</button> -->
+    <!-- </div> -->
 </main>

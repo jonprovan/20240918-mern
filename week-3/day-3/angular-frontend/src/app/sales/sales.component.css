@@ -1,3 +1,31 @@
 table {
     text-align: left;
+    margin-top: 80px;
+}
+
+h2 {
+    margin: 0px 150px 10px 0px;
+    font-size: 20px;
+    color: rgb(19, 187, 131);
+}
+
+label, input, select, button {
+    display: block;
+}
+
+label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+input, select {
+    margin-bottom: 8px;
+}
+
+th, td {
+    padding-right: 0.5em;
+}
+
+#update {
+    float: right;
 }

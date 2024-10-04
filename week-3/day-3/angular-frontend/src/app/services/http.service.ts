@@ -20,12 +20,9 @@ export class HttpService {
 
   // we can write methods here that make HTTP calls of any type
   
-  // to get all sales
-  getAllSales(): Observable<HttpResponse<Sale[]>> {
-    // first param = URL for the request
-    // second param = what data you want to observe from the response
-    return this.http.get<Sale[]>(this.baseURL + 'sale', { observe: 'response' });
-  }
+  /**
+   * SALESPERSON REQUESTS
+   */
 
   // getting all salespeople
   getAllSalespeople(): Observable<HttpResponse<Salesperson[]>> {
@@ -36,6 +33,30 @@ export class HttpService {
   // this method must take in a number, then use it in the URL
   deleteSalesperson(id: number): Observable<HttpResponse<void>> {
     return this.http.delete<void>(this.baseURL + 'salesperson/' + id, { observe: 'response' });
+  }
+
+    /**
+   * SALE REQUESTS
+   */
+
+  // to get all sales
+  getAllSales(): Observable<HttpResponse<Sale[]>> {
+    // first param = URL for the request
+    // second param = what data you want to observe from the response
+    return this.http.get<Sale[]>(this.baseURL + 'sale', { observe: 'response' });
+  }
+
+  // add a sale
+  // this method requires a body as the second parameter
+  // even if you don't use the body in the backend
+  // you still need to include an empty object in the request
+  addSale(newSale: Sale): Observable<HttpResponse<Sale>> {
+    return this.http.post<Sale>(this.baseURL + 'sale', newSale, { observe: 'response' });
+  }
+
+  // update a sale
+  updateSale(id: number, updatedSale: Sale): Observable<HttpResponse<Sale>> {
+    return this.http.put<Sale>(this.baseURL + 'sale/' + id, updatedSale, { observe: 'response' });
   }
 
   // delete a sale
