@@ -10,7 +10,7 @@
             without altering the underlying data
             syntax = {{ <ts variable name> | <pipe type> : <param1> : <param2> : etc. }}
         -->
-        <li>Hire Date: {{ salesperson.hire_date | date : 'shortDate' }}</li>
+        <li>Hire Date: {{ salesperson.hire_date | date : 'longDate' }}</li>
         <li>Salary: {{ salesperson.salary | currency : 'USD' }}</li>
     </ul>
     

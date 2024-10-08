@@ -1,0 +1,87 @@
+<!-- we bind this form to the createForm FormGroup -- [formGroup]="<name of FormGroup in .ts file>" -->
+<form [formGroup]="createForm">
+    <h2>CREATE SALESPERSON</h2>
+
+    <!-- and we bind each input to its corresponding FormControl -->
+    <!-- this DOES NOT use our getters -- the formControlName value is the name of the FormControl in the FormGroup object itself -->
+    <!-- for instance, this first one uses the name we specified on line 38 of the .ts file -->
+    <label for="createFirstName">First Name</label>
+    <input type="text" id="createFirstName" name="createFirstName" formControlName="createFirstName">
+
+    <label for="createLastName">Last Name</label>
+    <input type="text" id="createLastName" name="createLastName" formControlName="createLastName">
+
+    <label for="createDepartment">Department</label>
+    <input type="text" id="createDepartment" name="createDepartment" formControlName="createDepartment">
+
+    <label for="createHireDate">Hire Date</label>
+    <input type="date" id="createHireDate" name="createHireDate" formControlName="createHireDate">
+
+    <label for="createSalary">Salary</label>
+    <input type="number" id="createSalary" name="createSalary" formControlName="createSalary">
+
+    <!-- calling our reset method on click -->
+    <button type="button" (click)="resetCreateForm()">RESET FORM</button>
+    <!-- calling our submit method on click -->
+    <!-- note the [disabled] property -- this button will not function if ANYTHING is wrong with ANY of the FormControls -->
+    <!-- if you have multiple Validators for a single FormControl, even a single one will disable that control and the form -->
+    <button type="button" (click)="submitCreateForm()" [disabled]="createForm.invalid">CREATE SALESPERSON</button>
+
+    <!-- this section displays various error messages if the FormControls' Validators register an error -->
+    <!-- in order to only have a single message display at a time, they're structured with a series of @ifs/@else ifs -->
+    <!-- as such, an error in an input higher-up on the form will take priority -->
+    <!-- but, if you have multiple errors, they'll continue to display until taken care of -->
+    <section>
+        <!-- for each, we use our getters to access the individual FormControls' properties -->
+        <!-- the optional chaining operator is necessary here as well, for the same reason -->
+        <!--
+            .invalid = something is wrong with one or more Validators for that FormControl
+            .touched = the user has clicked or tabbed into and then out of the field, whether they changed something or not
+            .dirty = the user has changed something in the field
+
+            The combination of these allows errors to display in two useful ways:
+                1. They clicked into the field and then moved on without entering a valid value
+                2. As they type, if they type something that doesn't follow the rules
+        -->
+        @if (createFirstName?.invalid && (createFirstName?.touched || createFirstName?.dirty)) {
+            <!-- to check a specific Validator, use this syntax -->
+            <!-- the check will return truthy if there IS an error for that Validator -->
+            <!-- so, this one returns true if the value in the createFirstName control is an empty string -->
+            @if (createFirstName?.errors?.['required']) {
+                First Name is required.
+            <!-- we don't need an else if here -->
+            <!-- we already know something's wrong via our outer @if check, so if it's not the first Validator, it must be the other -->
+            } @else {
+                First Name must be 32 characters or fewer.
+            }
+        } @else if (createLastName?.invalid && (createLastName?.touched || createLastName?.dirty)) {
+            @if (createLastName?.errors?.['required']) {
+                Last Name is required.
+            } @else {
+                Last Name must be 32 characters or fewer.
+            }
+        } @else if (createDepartment?.invalid && (createDepartment?.touched || createDepartment?.dirty)) {
+            @if (createDepartment?.errors?.['required']) {
+                Department is required.
+            } @else {
+                Department must be 32 characters or fewer.
+            }
+        } @else if (createHireDate?.invalid && (createHireDate?.touched || createHireDate?.dirty)) {
+            @if (createHireDate?.errors?.['required']) {
+                Hire Date is required.
+            } @else {
+                Hire Date year must be 4 digits or fewer.
+            }
+        } @else if (createSalary?.invalid && (createSalary?.touched || createSalary?.dirty)) {
+            @if (createSalary?.errors?.['required']) {
+                Salary is required.
+            <!-- here, we have three Validators, so we need an extra @else if -->
+            } @else if (createSalary?.errors?.['max']) {
+                Salary must be $1,000,000 or less.
+            } @else {
+                Salary must be a non-negative integer.
+            }
+        }
+    </section>
+
+</form>

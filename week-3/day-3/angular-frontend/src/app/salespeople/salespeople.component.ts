@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Salesperson } from '../models/salesperson';
 import { SalespersonComponent } from '../salesperson/salesperson.component';
 import { HttpService } from '../services/http.service';
+// this import is for the component with the reactive create form in it
+import { ReactiveFormsComponent } from '../reactive-forms/reactive-forms.component';
 
 @Component({
   selector: 'app-salespeople',
   standalone: true,
-  imports: [SalespersonComponent],
+  imports: [SalespersonComponent, ReactiveFormsComponent], // importing components used in this component's HTML
   templateUrl: './salespeople.component.html',
   styleUrl: './salespeople.component.css'
 })
@@ -15,14 +17,6 @@ export class SalespeopleComponent {
   constructor(private httpService: HttpService){
     this.getAllSalespeople();
   }
-
-  // this array will be fed out to child Salesperson components, one each
-  // mockSalespeople: Salesperson[] = [
-  //   new Salesperson(1, 'SP1', 'Last1', 'Real Estate', '2009-09-09', 123456),
-  //   new Salesperson(2, 'SP2', 'Last2', 'Beachfront', '2001-02-02', 50),
-  //   new Salesperson(3, 'SP3', 'Last3', 'Commercial', '2005-05-05', 99999),
-  //   new Salesperson(4, 'SP4', 'Last4', 'Industrial', '2011-11-11', 8675309)
-  // ]
 
   salespersonRaise(index: number, raiseAmount: number) {
     this.salespeople[index].salary += raiseAmount;
@@ -57,6 +51,14 @@ export class SalespeopleComponent {
         }
       this.salespeople = tempSalespeople;
     });
+  }
+
+  // this method runs when the event comes up from the ReactiveFormsComponent
+  // refer to the target method in http.service.ts
+  createSalesperson(salesperson: Salesperson) {
+    this.httpService.createSalesperson(salesperson).subscribe(data => {
+      this.getAllSalespeople();
+    })
   }
 
 }

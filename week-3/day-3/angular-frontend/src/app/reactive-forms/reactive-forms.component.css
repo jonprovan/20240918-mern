@@ -1,0 +1,40 @@
+form {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 0px 150px 10px 0px;
+    font-size: 20px;
+    color: rgb(19, 187, 131);
+}
+
+label, input, select {
+    display: block;
+}
+
+label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+input {
+    width: 240px;
+    margin-bottom: 8px;
+}
+
+button {
+    display: inline-block;
+    margin: 0px 8px 8px 0px;
+}
+
+section {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 13px;
+    height: 20px;
+}
+
+#update {
+    float: right;
+}

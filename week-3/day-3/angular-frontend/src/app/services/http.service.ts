@@ -34,6 +34,11 @@ export class HttpService {
     return this.http.get<Salesperson>(this.baseURL + 'salesperson/' + id, { observe: 'response'});
   }
 
+  // create a salesperson
+  createSalesperson(salesperson: Salesperson): Observable<HttpResponse<Salesperson>> {
+    return this.http.post<Salesperson>(this.baseURL + 'salesperson', salesperson, { observe: 'response' });
+  }
+
   // delete a salesperson
   // this method must take in a number, then use it in the URL
   deleteSalesperson(id: number): Observable<HttpResponse<void>> {
