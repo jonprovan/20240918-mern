@@ -53,7 +53,3 @@ SELECT * FROM student_courses_course;
 SELECT advisorName, department, studentName, studentYear, courseName FROM advisor JOIN student ON advisor.id = student.advisorId
 	JOIN student_courses_course ON student.id = student_courses_course.studentId
     JOIN course ON student_courses_course.courseId = course.id;
-
-
-
-
