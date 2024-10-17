@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
 import { AdvisorService } from './advisor.service';
 import { Advisor } from './advisor';
 import { DeleteResult } from 'typeorm';
@@ -34,6 +34,13 @@ export class AdvisorController {
     // taking in our body as an Advisor object
     createAdvisor(@Body() newAdvisor: Advisor) {
         return this.service.createAdvisor(newAdvisor);
+    }
+
+    // update one
+    @Put(':id')
+    @HttpCode(200)
+    updateAdvisor(@Param('id') routeId: number, @Body() advisorToUpdate) {
+        return this.service.updateAdvisor(routeId, advisorToUpdate);
     }
 
     // delete one

@@ -9,7 +9,7 @@ import { Advisor } from './advisor';
   // these next two lines will not be automatically added
   imports: [ TypeOrmModule.forFeature([Advisor]) ],
   exports: [ TypeOrmModule ],
-  providers: [AdvisorService],
-  controllers: [AdvisorController]
+  providers: [ AdvisorService ],
+  controllers: [ AdvisorController ]
 })
 export class AdvisorModule {}
