@@ -2,11 +2,12 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from './student';
 import { DeleteResult, Repository } from 'typeorm';
+import { CourseService } from 'src/course/course.service';
 
 @Injectable()
 export class StudentService {
 
-    constructor(@InjectRepository(Student) private repo: Repository<Student>) {}
+    constructor(@InjectRepository(Student) private repo: Repository<Student>, private courseService: CourseService) {}
 
     // get all
     async getAllStudents(): Promise<Student[]> {
@@ -34,7 +35,7 @@ export class StudentService {
     }
 
     // create one
-    async createStudent(newStudent: Student): Promise<Student> {
+    async createStudent(newStudent: Student, courses: string): Promise<Student> {
         await this.repo.exists({
             where: {
                 id: newStudent.id
@@ -44,11 +45,21 @@ export class StudentService {
                 throw new HttpException(`Student with ID ${newStudent.id} already exists!`, HttpStatus.BAD_REQUEST);
         })
 
+        // tacking on something to push our courses to
+        newStudent.courses = [];
+
+        // going through each number in the courses parameter
+        // for each one, getting the course from the DB and adding to the newStudent courses array
+        for (let courseId of courses.split(',')) {
+            await this.courseService.getCourseById(Number(courseId))
+                .then(course => newStudent.courses.push(course));
+        }
+
         return await this.repo.save(newStudent);
     }
 
     // update one
-    async updateStudent(routeId: number, studentToUpdate: Student) {
+    async updateStudent(routeId: number, studentToUpdate: Student, courses: string) {
         if (routeId != studentToUpdate.id) {
             throw new HttpException(`Route ID and Body ID do not match!`, HttpStatus.BAD_REQUEST);
         }
@@ -62,7 +73,21 @@ export class StudentService {
                 throw new HttpException(`Student with ID ${studentToUpdate.id} does not exist!`, HttpStatus.NOT_FOUND);
         })
 
-        // TO-DO: adjust for relations when we have them *******************************************
+        // if you need to clear the join table, use a query!
+        // use this method/syntax for any custom queries you want to run!
+        // await this.repo.query(`DELETE FROM student_courses_course WHERE studentId = ${studentToUpdate.id}`).then(data => {
+        //     console.log(data);
+        // });
+
+        studentToUpdate.courses = [];
+
+        // going through each number in the courses parameter
+        // for each one, getting the course from the DB and adding to the newStudent courses array
+        for (let courseId of courses.split(',')) {
+            await this.courseService.getCourseById(Number(courseId))
+                .then(course => studentToUpdate.courses.push(course));
+        }
+        
         return await this.repo.save(studentToUpdate);
     }
 

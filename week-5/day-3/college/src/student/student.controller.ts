@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query } from '@nestjs/common';
 import { DeleteResult } from 'typeorm';
 import { StudentService } from './student.service';
 import { Student } from './student';
@@ -25,15 +25,16 @@ export class StudentController {
     // create one
     @Post()
     @HttpCode(201)
-    createStudent(@Body() newStudent: Student) {
-        return this.service.createStudent(newStudent);
+    // taking in the courses as a query parameter
+    createStudent(@Body() newStudent: Student, @Query('courses') courses: string) {
+        return this.service.createStudent(newStudent, courses);
     }
 
     // update one
     @Put(':id')
     @HttpCode(200)
-    updateStudent(@Param('id') routeId: number, @Body() studentToUpdate) {
-        return this.service.updateStudent(routeId, studentToUpdate);
+    updateStudent(@Param('id') routeId: number, @Body() studentToUpdate, @Query('courses') courses: string) {
+        return this.service.updateStudent(routeId, studentToUpdate, courses);
     }
 
     // delete one

@@ -7,6 +7,7 @@ async function bootstrap() {
   // this allows our app to validate input as it's coming in
   // npm i class-transformer to use
   // add the whitelist option to strip out properties not in the correspoding object's class
+  // careful with the whitelist -- it will eliminate relations from incoming objects!!
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   await app.listen(process.env.PORT ?? 8080);
 }
