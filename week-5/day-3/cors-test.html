@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Test</title>
+
+    <script>
+
+        async function getData() {
+            const data = await fetch('http://localhost:8080/advisor')
+                .then(data => data.json())
+                .then(json => console.log(json));
+        }
+
+    </script>
+</head>
+<body>
+
+    <button type="button" onclick="getData()">GET DATA</button>
+    
+</body>
+</html>

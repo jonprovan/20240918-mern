@@ -16,6 +16,11 @@ import { CourseService } from './course/course.service';
 import { Course } from './course/course';
 import { Lumberjack1Middleware } from './middleware/lumberjack-1.middleware';
 import { lumberjack2 } from './middleware/lumberjack-2.middleware';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { UserService } from './user/user.service';
+import { AuthService } from './auth/auth.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -32,14 +37,17 @@ import { lumberjack2 } from './middleware/lumberjack-2.middleware';
     }),
     AdvisorModule,
     StudentModule,
-    CourseModule
+    CourseModule,
+    UserModule,
+    AuthModule,
+    HttpModule
   ],
   // controllers are classes with endpoints we can hit from the front
   // add each controller as you create it
   controllers: [ AppController, AdvisorController, StudentController, CourseController ],
   // add each service as you create it
   // providers (most often services) are classes we can inject into other classes to provide functionality
-  providers: [ AppService, AdvisorService, StudentService, CourseService ],
+  providers: [ AppService, AdvisorService, StudentService, CourseService, UserService, AuthService ],
 })
 
 // the content of this export sets up our app to use middleware, either class-based or functional
