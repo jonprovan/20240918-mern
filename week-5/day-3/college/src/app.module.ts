@@ -23,6 +23,8 @@ import { AuthService } from './auth/auth.service';
 import { HttpModule } from '@nestjs/axios';
 import { User } from './user/user';
 import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -50,7 +52,8 @@ import { JwtModule } from '@nestjs/jwt';
   controllers: [ AppController, AdvisorController, StudentController, CourseController ],
   // add each service as you create it
   // providers (most often services) are classes we can inject into other classes to provide functionality
-  providers: [ AppService, AdvisorService, StudentService, CourseService, UserService, AuthService ],
+  // any guard you want to use globally should be added here using APP_GUARD
+  providers: [ AppService, AdvisorService, StudentService, CourseService, UserService, AuthService, { provide: APP_GUARD, useClass: JwtAuthGuard } ],
 })
 
 // the content of this export sets up our app to use middleware, either class-based or functional

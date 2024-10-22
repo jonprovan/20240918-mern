@@ -8,7 +8,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 @Injectable()
 export class Lumberjack1Middleware implements NestMiddleware {
   use(req: any, res: any, next: () => void) {
-    console.log('********** LOGGER 1 ACTIVATED **********');
+    // console.log('********** LOGGER 1 ACTIVATED **********');
     next();
   }
 }
