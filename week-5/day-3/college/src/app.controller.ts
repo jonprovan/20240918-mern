@@ -1,6 +1,7 @@
 import { Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller()
 export class AppController {
@@ -17,6 +18,12 @@ export class AppController {
   @Post('guarded')
   getGuardedMessage(): string {
     return 'You have passed the guard!'
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('jwtGuarded')
+  getJwtGuardedMessage(): string {
+    return 'You have passed the JWT Guard!';
   }
 
   // getting from an external API

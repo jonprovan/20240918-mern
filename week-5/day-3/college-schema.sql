@@ -39,16 +39,27 @@ CREATE TABLE `college`.`student_courses_course` (
     REFERENCES `college`.`course` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+    
+CREATE TABLE `college`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(32) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
 
 INSERT INTO advisor(advisorName, department) VALUES('Weatherly Davison', 'Sports Medicine'), ('Ima Hacker', 'Cybersecurity');
 INSERT INTO student(studentName, studentYear, advisorId) VALUES('Austin Powers', 'Sophomore', 1), ('Willy Wonka', 'Senior', 2), ('Les Paul', 'Junior', 1), ('Minty Gums', 'Freshman', 2);
 INSERT INTO course(courseName) VALUES('Physical Therapy'), ('White Hat Hacking'), ('Bone Splinting 101'), ('DDoS Attacks For Dummies'), ('Gauze'), ('SEC+');
 INSERT INTO student_courses_course(studentId, courseId) VALUES(1, 3), (2, 5), (3, 1), (4, 6), (1, 2), (2, 4), (3, 3), (4, 1);
 
+insert into user(username, password) values('user1', 'abcde');
+delete from user where id > 0;
+
 SELECT * FROM advisor;
 SELECT * FROM student;
 SELECT * FROM course;
 SELECT * FROM student_courses_course;
+SELECT * FROM user;
 
 SELECT advisorName, department, studentName, studentYear, courseName FROM advisor JOIN student ON advisor.id = student.advisorId
 	JOIN student_courses_course ON student.id = student_courses_course.studentId

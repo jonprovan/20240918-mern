@@ -21,6 +21,8 @@ import { AuthModule } from './auth/auth.module';
 import { UserService } from './user/user.service';
 import { AuthService } from './auth/auth.service';
 import { HttpModule } from '@nestjs/axios';
+import { User } from './user/user';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -33,14 +35,15 @@ import { HttpModule } from '@nestjs/axios';
       password: 'root',
       database: 'college',
       synchronize: false, // IMPORTANT!! if this is true, your changes in the app will affect the schema!!
-      entities: [ Advisor, Student, Course ] // must add DB entities as you create them
+      entities: [ Advisor, Student, Course, User ] // must add DB entities as you create them
     }),
     AdvisorModule,
     StudentModule,
     CourseModule,
     UserModule,
     AuthModule,
-    HttpModule
+    HttpModule,
+    JwtModule
   ],
   // controllers are classes with endpoints we can hit from the front
   // add each controller as you create it
