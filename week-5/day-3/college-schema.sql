@@ -52,9 +52,6 @@ INSERT INTO student(studentName, studentYear, advisorId) VALUES('Austin Powers',
 INSERT INTO course(courseName) VALUES('Physical Therapy'), ('White Hat Hacking'), ('Bone Splinting 101'), ('DDoS Attacks For Dummies'), ('Gauze'), ('SEC+');
 INSERT INTO student_courses_course(studentId, courseId) VALUES(1, 3), (2, 5), (3, 1), (4, 6), (1, 2), (2, 4), (3, 3), (4, 1);
 
-insert into user(username, password) values('user1', 'abcde');
-delete from user where id > 0;
-
 SELECT * FROM advisor;
 SELECT * FROM student;
 SELECT * FROM course;
