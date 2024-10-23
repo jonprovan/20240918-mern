@@ -1,0 +1,29 @@
+<!-- REGISTER FORM -->
+<form>
+    <h2>REGISTER</h2>
+    <label for="registerUsername">Username: </label>
+    <input type="text" id="registerUsername" 
+           name="registerUsername" [(ngModel)]="registerUsername">
+
+    <label for="registerPassword">Password: </label>
+    <input type="password" id="registerPassword" 
+           name="registerPassword" [(ngModel)]="registerPassword">
+
+    <button type="button" (click)="register()">REGISTER</button>
+</form>
+
+<!-- LOGIN FORM -->
+<form>
+    <h2>LOGIN</h2>
+    <label for="loginUsername">Username: </label>
+    <input type="text" id="loginUsername" 
+           name="loginUsername" [(ngModel)]="loginUsername">
+
+    <label for="loginPassword">Password: </label>
+    <input type="password" id="loginPassword" 
+           name="loginPassword" [(ngModel)]="loginPassword">
+
+    <button type="button" (click)="login()">LOGIN</button>
+</form>
+
+<button type="button" (click)="getStudents()">GET STUDENTS</button>

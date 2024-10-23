@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // adding CORS filtration
   // include any whitelisted origins in the origin array
-  app.enableCors({ origin: [ 'http://127.0.0.1:5500', 'any other origin(s)' ] });
+  app.enableCors({ origin: [ 'http://127.0.0.1:5500', 'http://localhost:4200' ] });
 
   // this allows our app to validate input as it's coming in
   // npm i class-transformer to use
