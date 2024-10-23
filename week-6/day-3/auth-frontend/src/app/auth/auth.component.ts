@@ -64,8 +64,8 @@ export class AuthComponent {
   // you'll effectively redirect the user to the auth provider to log in
   getToken() {
     this.http.post<any>('https://dev-wuwoj0rn24tcj1e2.us.auth0.com/oauth/token',
-      { client_id:'<your client ID>',
-        client_secret:'<your client Secret>',
+      { client_id:'e1JnX2XTw872qnZLdI68QvCZR7ImXyIX',
+        client_secret:'EiEajOOZMn7AhrsCbARgKrZvjEUiJp-l-gVRDR5VcADBvhamEYT5qrr3hxeeOOaZ',
         audience:'https://mean-demo-app.com',
         grant_type:'client_credentials' },
       { observe: 'response' })
