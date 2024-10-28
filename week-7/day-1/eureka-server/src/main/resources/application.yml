@@ -1,0 +1,25 @@
+# this .yml file sets up the configuration for our Eureka server application
+# indents must be spaces, not tabs, for this to compile
+spring:
+    application:
+        name: eureka-server
+
+# standard port for a Eureka server is 8761
+server:
+    port: 8761
+
+# we do not want this server to register itself as a service
+# it should not appear when other services request the available services
+eureka:
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+
+# you can set overall logging level
+# here, we just want better logs for the services we care about
+logging:
+    level:
+        com:
+            netflix:
+                eureka: INFO
+                discovery: INFO
