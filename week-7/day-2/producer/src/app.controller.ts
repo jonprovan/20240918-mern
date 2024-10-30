@@ -24,4 +24,9 @@ export class AppController {
     return this.appService.sendToConsumerA('bogus', {});
   }
 
+  @Post('exchange')
+  sendToExchange(@Body() body: any) {
+    return this.appService.sendToExchange(body.exchange, body.routingKey, body.data);
+  }
+
 }

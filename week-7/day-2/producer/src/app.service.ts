@@ -16,4 +16,9 @@ export class AppService {
     return this.rabbitService.sendToConsumerB(pattern, data);
   }
 
+  async sendToExchange(exchange: string, routingKey: string, data: any) {
+    this.rabbitService.sendToExchange(exchange, routingKey, data);
+    return { msg: 'Message sent to exchange!' };
+  }
+
 }

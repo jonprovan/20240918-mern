@@ -1,3 +1,4 @@
+import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
 import { HttpException, Injectable } from '@nestjs/common';
 import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { catchError, firstValueFrom } from 'rxjs';
@@ -9,7 +10,9 @@ export class RabbitService {
     private consumerA: ClientProxy;
     private consumerB: ClientProxy;
 
-    constructor() {
+    // we inject an AmqpConnection into our class to be able to publish to an exchange
+    // this uses the @golevelup package we installed
+    constructor(private amqpConnection: AmqpConnection) {
         // setting up each consumer to eventually send to via RabbitMQ
         this.consumerA = ClientProxyFactory.create({
             transport: Transport.RMQ,               // using RabbitMQ's transport layer
@@ -44,6 +47,14 @@ export class RabbitService {
                 catchError(error => { throw new HttpException(error, error.status) })
             )
         )
+    }
+
+    // this method posts content to an exchange rather than a queue
+    // we're setting this up be able to take in varying exchanges/routing keys
+    // but we're only ever going to use one of each in the demo
+    // feel free to expand on this and test it!
+    async sendToExchange(exchange: string, routingKey: string, data: any) {
+        this.amqpConnection.publish(exchange, routingKey, data);
     }
 
 }
